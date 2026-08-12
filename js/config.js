@@ -1,7 +1,7 @@
 export const STORE_CONFIG = {
   brandName: "Articulos Ferreteros EH",
   location: "Nicaragua",
-  whatsappNumber: "505588129286",
+  whatsappNumber: "50588129286",
   whatsappGreeting:
     "Hola, vengo desde su pagina web de Articulos Ferreteros EH y deseo cotizar un producto.",
   social: {
