@@ -1,0 +1,25 @@
+{
+  "name": "Articulos Ferreteros EH",
+  "short_name": "Ferreteria EH",
+  "description": "Tienda online de articulos ferreteros con catalogo dinamico.",
+  "id": "./",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#ebedf0",
+  "theme_color": "#0d2238",
+  "icons": [
+    {
+      "src": "./assets/logo-ferreteria-eh.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./assets/logo-ferreteria-eh.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

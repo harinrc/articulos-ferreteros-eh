@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin | Articulos Ferreteros EH</title>
+  <link rel="icon" href="./assets/logo-ferreteria-eh.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body class="admin-page">
+  <main class="admin-shell">
+    <section class="admin-topbar">
+      <div>
+        <h1>Administracion de Catalogo</h1>
+        <p>Alta, edicion y eliminacion de productos en tiempo real.</p>
+      </div>
+      <div class="admin-actions">
+        <a href="./index.html" class="text-link">Ver tienda</a>
+        <button id="logout-button" type="button" class="danger-btn">Cerrar sesion</button>
+      </div>
+    </section>
+
+    <section class="admin-grid">
+      <article class="admin-card">
+        <h2 id="form-title">Agregar producto</h2>
+        <form id="product-form" class="form-stack">
+          <input type="hidden" id="product-id">
+
+          <label for="product-name">Nombre</label>
+          <input id="product-name" required placeholder="Ej: Taladro Inalambrico 18V">
+
+          <label for="product-price">Precio</label>
+          <input id="product-price" required placeholder="Ej: C$ 2,500">
+
+          <label for="product-category">Categoria</label>
+          <select id="product-category" required>
+            <option value="Herramientas Manuales">Herramientas Manuales</option>
+            <option value="Herramientas Electricas">Herramientas Electricas</option>
+            <option value="Tornilleria">Tornilleria</option>
+            <option value="Seguridad">Seguridad</option>
+            <option value="Plomeria">Plomeria</option>
+            <option value="Electricidad">Electricidad</option>
+            <option value="Pintura">Pintura</option>
+            <option value="Otros">Otros</option>
+          </select>
+
+          <label for="product-description">Descripcion</label>
+          <textarea id="product-description" rows="3" placeholder="Descripcion corta del producto"></textarea>
+
+          <label for="product-images">Imagenes (puedes subir varias)</label>
+          <input id="product-images" type="file" accept="image/png,image/jpeg,image/webp" multiple>
+
+          <div class="form-buttons">
+            <button type="submit" id="save-button" class="cta-btn">Guardar producto</button>
+            <button type="button" id="cancel-edit-button" class="muted-btn" hidden>Cancelar edicion</button>
+          </div>
+
+          <p id="admin-message" class="status-msg"></p>
+        </form>
+      </article>
+
+      <article class="admin-card">
+        <h2>Productos actuales</h2>
+        <div id="admin-product-list" class="admin-product-list">
+          <p class="status-msg">Cargando productos...</p>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script type="module" src="./js/admin.js"></script>
+</body>
+</html>

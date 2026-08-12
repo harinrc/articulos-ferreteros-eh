@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Articulos Ferreteros EH | Tienda en linea</title>
+  <meta name="description" content="Tienda en linea de articulos ferreteros: herramientas, tornilleria, seguridad industrial y mas.">
+  <meta name="theme-color" content="#0d2238">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Articulos Ferreteros EH">
+  <meta property="og:description" content="Catalogo digital de productos ferreteros con atencion por WhatsApp.">
+  <meta property="og:image" content="./assets/logo-ferreteria-eh.png">
+  <link rel="icon" href="./assets/logo-ferreteria-eh.png" type="image/png">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <header class="site-header" id="site-header">
+    <a class="brand" href="./index.html" aria-label="Inicio Articulos Ferreteros EH">
+      <img src="./assets/logo-ferreteria-eh.png" alt="Logo Articulos Ferreteros EH">
+      <span>Articulos Ferreteros EH</span>
+    </a>
+
+    <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-nav">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <nav class="main-nav" id="main-nav">
+      <a href="#inicio">Inicio</a>
+      <a href="#productos">Productos</a>
+      <a href="./nosotros.html">Nosotros</a>
+      <a href="#contacto">Contacto</a>
+      <a href="./login.html" class="btn-link">Admin</a>
+    </nav>
+  </header>
+
+  <main id="inicio">
+    <section class="hero">
+      <div class="swiper hero-swiper" id="hero-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1581091215363-3c9a4b8f1b6b?auto=format&fit=crop&w=1600&q=80" alt="Herramientas en banco de trabajo"></div>
+          <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=1600&q=80" alt="Taladro y herramientas electricas"></div>
+          <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1621905252472-e8f84f67f4a3?auto=format&fit=crop&w=1600&q=80" alt="Zona de construccion y seguridad"></div>
+        </div>
+      </div>
+
+      <div class="hero-overlay">
+        <p class="kicker">Entrega nacional y asesoria rapida</p>
+        <h1>Tu ferreteria digital para proyectos grandes y pequeños</h1>
+        <p>
+          Encuentra herramientas manuales, eléctricas, accesorios de instalación y seguridad industrial.
+          Te atendemos por WhatsApp y te ayudamos a cotizar rápido.
+        </p>
+        <a id="hero-whatsapp-link" class="cta-btn" target="_blank" rel="noopener noreferrer">Cotizar por WhatsApp</a>
+      </div>
+    </section>
+
+    <section class="feature-strip" aria-label="Beneficios de la tienda">
+      <article>
+        <i class="fa-solid fa-truck-fast"></i>
+        <h2>Envios a todo Nicaragua</h2>
+      </article>
+      <article>
+        <i class="fa-solid fa-shield-halved"></i>
+        <h2>Productos garantizados</h2>
+      </article>
+      <article>
+        <i class="fa-solid fa-headset"></i>
+        <h2>Atencion personalizada</h2>
+      </article>
+    </section>
+
+    <section class="products" id="productos">
+      <div class="section-head">
+        <p class="kicker">Catalogo dinamico</p>
+        <h2>Productos destacados</h2>
+        <p>Cada producto se carga desde Firebase para que puedas administrar inventario sin tocar codigo.</p>
+      </div>
+
+      <div class="catalog-controls">
+        <label class="search-box" for="input-buscador">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input id="input-buscador" type="search" placeholder="Busca por nombre, por ejemplo: taladro, guantes, broca...">
+        </label>
+
+        <div class="category-filters" id="category-filters">
+          <button class="filter-btn active" data-category="todos">Todos</button>
+          <button class="filter-btn" data-category="Herramientas Manuales">Herramientas Manuales</button>
+          <button class="filter-btn" data-category="Herramientas Electricas">Herramientas Electricas</button>
+          <button class="filter-btn" data-category="Tornilleria">Tornilleria</button>
+          <button class="filter-btn" data-category="Seguridad">Seguridad</button>
+          <button class="filter-btn" data-category="Plomeria">Plomeria</button>
+          <button class="filter-btn" data-category="Electricidad">Electricidad</button>
+          <button class="filter-btn" data-category="Pintura">Pintura</button>
+          <button class="filter-btn" data-category="Otros">Otros</button>
+        </div>
+      </div>
+
+      <div class="product-grid" id="product-grid">
+        <p class="status-msg">Cargando productos...</p>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contacto" class="site-footer">
+    <div class="footer-brand">
+      <img src="./assets/logo-ferreteria-eh.png" alt="Logo Articulos Ferreteros EH">
+      <p>Articulos Ferreteros EH</p>
+      <small>Materiales y herramientas para trabajo profesional.</small>
+    </div>
+
+    <div class="footer-links">
+      <h3>Navegacion</h3>
+      <a href="./index.html">Inicio</a>
+      <a href="./nosotros.html">Nosotros</a>
+      <a href="#productos">Productos</a>
+      <a href="./login.html">Admin</a>
+    </div>
+
+    <div class="footer-links">
+      <h3>Contacto</h3>
+      <a id="footer-wa-link" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+      <a id="footer-fb-link" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook"></i> Facebook</a>
+      <a id="footer-ig-link" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i> Instagram</a>
+      <a id="footer-tt-link" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-tiktok"></i> TikTok</a>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script type="module" src="./js/storefront.js"></script>
+</body>
+</html>
