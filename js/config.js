@@ -17,7 +17,6 @@ export const STORE_CONFIG = {
 export const FIREBASE_CONFIG = {
   apiKey: "AIzaSyD99PK3D8ZBqqkWqRl8x_nXCHoOYV1UKvI",
   authDomain: "articulos-ferreteros-eh.firebaseapp.com",
-  databaseURL: "https://articulos-ferreteros-eh-default-rtdb.firebaseio.com",
   projectId: "articulos-ferreteros-eh",
   storageBucket: "articulos-ferreteros-eh.firebasestorage.app",
   messagingSenderId: "774436339108",
