@@ -14,7 +14,7 @@ export const STORE_CONFIG = {
 
 // Reemplaza estos valores por los de tu proyecto Firebase cuando quieras separar
 // este sitio del proyecto original. Las API keys de Firebase Web no son secretas.
-export const firebaseConfig = {
+export const FIREBASE_CONFIG = {
   apiKey: "AIzaSyD99PK3D8ZBqqkWqRl8x_nXCHoOYV1UKvI",
   authDomain: "articulos-ferreteros-eh.firebaseapp.com",
   databaseURL: "https://articulos-ferreteros-eh-default-rtdb.firebaseio.com",
