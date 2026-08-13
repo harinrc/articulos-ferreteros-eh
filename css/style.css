@@ -137,6 +137,10 @@ img {
     overflow: hidden;
 }
 
+.hero-overlay h1 {
+    color: #dfdbdb !important;
+}
+
 .hero-swiper {
     width: 100%;
     height: 100%;
