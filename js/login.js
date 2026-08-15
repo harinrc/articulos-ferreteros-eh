@@ -21,7 +21,7 @@ window.addEventListener("DOMContentLoaded", () => {
       window.location.href = "./admin.html";
     } catch (error) {
       console.error(error);
-      message.textContent = "No se pudo iniciar sesion. Revisa correo y contrasena.";
+      message.textContent = "No se pudo iniciar sesión. Revisa correo y contraseña.";
     }
   });
 });

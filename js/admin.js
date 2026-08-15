@@ -83,15 +83,15 @@ function renderImagePreview(existingImages = [], selectedFiles = []) {
   const items = [...existingItems, ...fileItems];
 
   if (!items.length) {
-    dom.imagePreview.innerHTML = '<p class="image-preview-empty">Todavia no hay imagenes para previsualizar.</p>';
+    dom.imagePreview.innerHTML = '<p class="image-preview-empty">Todavía no hay imágenes para previsualizar.</p>';
     if (dom.imagePreviewNote) {
-      dom.imagePreviewNote.textContent = "Agrega una o varias imagenes para ver la previsualizacion.";
+      dom.imagePreviewNote.textContent = "Agrega una o varias imágenes para ver la previsualización.";
     }
     return;
   }
 
   if (dom.imagePreviewNote) {
-    dom.imagePreviewNote.textContent = `${existingItems.length} existentes y ${fileItems.length} nuevas imagenes.`;
+    dom.imagePreviewNote.textContent = `${existingItems.length} existentes y ${fileItems.length} nuevas imágenes.`;
   }
 
   dom.imagePreview.innerHTML = items
@@ -146,7 +146,7 @@ async function loadProducts() {
     );
 
     if (snapshot.empty) {
-      dom.list.innerHTML = '<p class="status-msg">No hay productos en el catalogo.</p>';
+      dom.list.innerHTML = '<p class="status-msg">No hay productos en el catálogo.</p>';
       return;
     }
 
@@ -202,7 +202,7 @@ async function startEdit(id) {
 }
 
 async function removeProduct(id) {
-  const approved = window.confirm("Deseas eliminar este producto?");
+  const approved = window.confirm("¿Deseas eliminar este producto?");
   if (!approved) return;
 
   await deleteDoc(doc(db, STORE_CONFIG.firebaseCollection, id));
@@ -251,7 +251,7 @@ async function onSubmit(event) {
     await loadProducts();
   } catch (error) {
     console.error(error);
-    showMessage("No se pudo guardar el producto. Revisa configuracion Firebase.");
+    showMessage("No se pudo guardar el producto. Revisa configuración Firebase.");
   } finally {
     dom.saveButton.disabled = false;
   }

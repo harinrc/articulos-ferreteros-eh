@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin | Articulos Ferreteros EH</title>
+  <title>Admin | Artículos Ferreteros EH</title>
   <meta name="description" content="Panel administrativo para gestionar el catálogo, precios y productos de Artículos Ferreteros EH.">
   <meta name="theme-color" content="#0f2237">
-  <meta property="og:title" content="Admin | Articulos Ferreteros EH">
+  <meta property="og:title" content="Admin | Artículos Ferreteros EH">
   <meta property="og:description" content="Administración del catálogo de productos ferreteros en línea.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://erickh-articulos-ferreteros-eh.netlify.app/admin.html">
@@ -22,12 +22,12 @@
   <main class="admin-shell">
     <section class="admin-topbar">
       <div>
-        <h1>Administracion de Catalogo</h1>
-        <p>Alta, edicion y eliminacion de productos en tiempo real.</p>
+        <h1>Administración de Catálogo</h1>
+        <p>Alta, edición y eliminación de productos en tiempo real.</p>
       </div>
       <div class="admin-actions">
         <a href="./index.html" class="text-link">Ver tienda</a>
-        <button id="logout-button" type="button" class="danger-btn">Cerrar sesion</button>
+        <button id="logout-button" type="button" class="danger-btn">Cerrar sesión</button>
       </div>
     </section>
 
@@ -38,40 +38,40 @@
           <input type="hidden" id="product-id">
 
           <label for="product-name">Nombre</label>
-          <input id="product-name" required placeholder="Ej: Taladro Inalambrico 18V">
+          <input id="product-name" required placeholder="Ej: Taladro inalámbrico 18V">
 
           <label for="product-price">Precio</label>
           <input id="product-price" required placeholder="Ej: C$ 2,500">
 
-          <label for="product-category">Categoria</label>
+          <label for="product-category">Categoría</label>
           <select id="product-category" required>
             <option value="Herramientas Manuales">Herramientas Manuales</option>
-            <option value="Herramientas Electricas">Herramientas Electricas</option>
-            <option value="Tornilleria">Tornilleria</option>
+            <option value="Herramientas Electricas">Herramientas Eléctricas</option>
+            <option value="Tornilleria">Tornillería</option>
             <option value="Seguridad">Seguridad</option>
-            <option value="Plomeria">Plomeria</option>
+            <option value="Plomeria">Plomería</option>
             <option value="Electricidad">Electricidad</option>
             <option value="Pintura">Pintura</option>
             <option value="Otros">Otros</option>
           </select>
 
-          <label for="product-description">Descripcion</label>
-          <textarea id="product-description" rows="3" placeholder="Descripcion corta del producto"></textarea>
+          <label for="product-description">Descripción</label>
+          <textarea id="product-description" rows="3" placeholder="Descripción corta del producto"></textarea>
 
-          <label for="product-images">Imagenes (puedes subir varias)</label>
+          <label for="product-images">Imágenes (puedes subir varias)</label>
           <input id="product-images" type="file" accept="image/png,image/jpeg,image/webp" multiple>
 
           <div class="image-preview-block">
             <div class="image-preview-head">
-              <p>Previsualizacion de imagenes</p>
-              <small id="image-preview-note">Las imagenes existentes y nuevas se mostraran aqui.</small>
+              <p>Previsualización de imágenes</p>
+              <small id="image-preview-note">Las imágenes existentes y nuevas se mostrarán aquí.</small>
             </div>
             <div id="image-preview" class="image-preview-grid" aria-live="polite"></div>
           </div>
 
           <div class="form-buttons">
             <button type="submit" id="save-button" class="cta-btn">Guardar producto</button>
-            <button type="button" id="cancel-edit-button" class="muted-btn" hidden>Cancelar edicion</button>
+            <button type="button" id="cancel-edit-button" class="muted-btn" hidden>Cancelar edición</button>
           </div>
 
           <p id="admin-message" class="status-msg"></p>

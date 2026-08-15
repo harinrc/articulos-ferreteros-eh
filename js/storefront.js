@@ -21,11 +21,11 @@ function productWhatsAppMessage(product, imageUrl = "") {
     `Hola, me interesa este producto de ${STORE_CONFIG.brandName}:`,
     `Producto: ${product.nombre || "Sin nombre"}`,
     `Precio: ${product.precio || "Consultar"}`,
-    `Categoria: ${product.categoria || "Otros"}`
+    `Categoría: ${product.categoria || "Otros"}`
   ];
 
   if (product.descripcion) {
-    lines.push(`Descripcion: ${product.descripcion}`);
+    lines.push(`Descripción: ${product.descripcion}`);
   }
 
   if (imageUrl) {
@@ -215,14 +215,14 @@ async function loadProducts() {
     state.products = snapshot.docs.map((item) => ({ id: item.id, ...item.data() }));
 
     if (!state.products.length) {
-      grid.innerHTML = '<p class="status-msg">No hay productos aun. Agregalos desde el panel admin.</p>';
+      grid.innerHTML = '<p class="status-msg">No hay productos aún. Agrégalos desde el panel admin.</p>';
       return;
     }
 
     renderProducts();
   } catch (error) {
     console.error(error);
-    grid.innerHTML = '<p class="status-msg">No se pudo cargar el catalogo. Revisa Firebase config y reglas.</p>';
+    grid.innerHTML = '<p class="status-msg">No se pudo cargar el catálogo. Revisa Firebase config y reglas.</p>';
   }
 }
 

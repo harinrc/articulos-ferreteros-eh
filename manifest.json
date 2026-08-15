@@ -1,7 +1,7 @@
 {
-  "name": "Articulos Ferreteros EH",
-  "short_name": "Ferreteria EH",
-  "description": "Tienda online de articulos ferreteros con catalogo dinamico.",
+  "name": "Artículos Ferreteros EH",
+  "short_name": "Ferretería EH",
+  "description": "Tienda online de artículos ferreteros con catálogo dinámico.",
   "id": "./",
   "start_url": "./index.html",
   "scope": "./",
