@@ -1274,11 +1274,18 @@ body.lightbox-open {
 
 @media (max-width: 480px) {
   .brand {
-    padding-right: 8px;
+    gap: 8px;
+    padding: 4px 8px 4px 4px;
+    max-width: calc(100vw - 78px);
   }
 
   .brand span {
-    letter-spacing: 0.04em;
+    font-size: clamp(1.15rem, 5vw, 1.45rem);
+    line-height: 0.92;
+    letter-spacing: 0.02em;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    max-width: 9ch;
   }
 
   .feature-strip article,
@@ -1421,5 +1428,34 @@ body.lightbox-open {
   .about-page {
     margin-left: 12px;
     margin-right: 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  .site-header {
+    gap: 8px;
+    padding: 10px 10px;
+  }
+
+  .brand {
+    max-width: calc(100vw - 70px);
+  }
+
+  .brand img {
+    width: 42px;
+    height: 42px;
+    padding: 4px;
+    border-radius: 12px;
+  }
+
+  .brand span {
+    font-size: clamp(1rem, 4.6vw, 1.25rem);
+    max-width: 8ch;
+  }
+
+  .menu-toggle {
+    width: 40px;
+    height: 40px;
+    border-radius: 11px;
   }
 }
