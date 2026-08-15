@@ -1276,16 +1276,18 @@ body.lightbox-open {
   .brand {
     gap: 8px;
     padding: 4px 8px 4px 4px;
-    max-width: calc(100vw - 78px);
+    max-width: calc(100vw - 72px);
   }
 
   .brand span {
-    font-size: clamp(1.15rem, 5vw, 1.45rem);
-    line-height: 0.92;
+    font-size: clamp(1rem, 4.8vw, 1.28rem);
+    line-height: 1;
     letter-spacing: 0.02em;
-    white-space: normal;
-    overflow-wrap: anywhere;
-    max-width: 9ch;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+    max-width: calc(100vw - 150px);
   }
 
   .feature-strip article,
@@ -1445,11 +1447,11 @@ body.lightbox-open {
 @media (max-width: 360px) {
   .site-header {
     padding: 8px 8px;
-    gap: 8px;
+    gap: 6px;
   }
 
   .brand {
-    max-width: calc(100vw - 64px);
+    max-width: calc(100vw - 60px);
     gap: 6px;
     padding: 3px 6px 3px 3px;
   }
@@ -1462,8 +1464,12 @@ body.lightbox-open {
   }
 
   .brand span {
-    font-size: clamp(0.95rem, 4.2vw, 1.18rem);
-    max-width: 7ch;
+    font-size: clamp(0.88rem, 4.1vw, 1.06rem);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+    max-width: calc(100vw - 138px);
   }
 
   .menu-toggle {
@@ -1534,7 +1540,7 @@ body.lightbox-open {
   }
 
   .brand {
-    max-width: calc(100vw - 58px);
+    max-width: calc(100vw - 56px);
     gap: 5px;
     padding: 3px 5px 3px 3px;
   }
@@ -1547,13 +1553,14 @@ body.lightbox-open {
   }
 
   .brand span {
-    font-size: 0.68rem;
-    line-height: 0.9;
+    font-size: 0.84rem;
+    line-height: 1;
     letter-spacing: 0.01em;
-    white-space: normal;
-    overflow-wrap: normal;
-    word-break: keep-all;
-    max-width: 12ch;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+    max-width: calc(100vw - 132px);
   }
 
   .menu-toggle {
@@ -1582,34 +1589,5 @@ body.lightbox-open {
 
   .image-lightbox-img {
     max-height: 66vh;
-  }
-}
-
-@media (max-width: 360px) {
-  .site-header {
-    gap: 8px;
-    padding: 10px 10px;
-  }
-
-  .brand {
-    max-width: calc(100vw - 70px);
-  }
-
-  .brand img {
-    width: 42px;
-    height: 42px;
-    padding: 4px;
-    border-radius: 12px;
-  }
-
-  .brand span {
-    font-size: clamp(1rem, 4.6vw, 1.25rem);
-    max-width: 8ch;
-  }
-
-  .menu-toggle {
-    width: 40px;
-    height: 40px;
-    border-radius: 11px;
   }
 }
