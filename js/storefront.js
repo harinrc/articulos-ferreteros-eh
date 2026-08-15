@@ -15,7 +15,7 @@ function normalizeImages(imageField) {
   return [];
 }
 
-function productWhatsAppMessage(product) {
+function productWhatsAppMessage(product, imageUrl = "") {
   const lines = [
     `Hola, me interesa este producto de ${STORE_CONFIG.brandName}:`,
     `Producto: ${product.nombre || "Sin nombre"}`,
@@ -27,7 +27,16 @@ function productWhatsAppMessage(product) {
     lines.push(`Descripcion: ${product.descripcion}`);
   }
 
+  if (imageUrl) {
+    lines.push(`Foto del producto: ${imageUrl}`);
+  }
+
   return lines.join("\n");
+}
+
+function updateCardWhatsAppLink(button, product, imageUrl = "") {
+  if (!button) return;
+  button.href = buildWhatsAppLink(productWhatsAppMessage(product, imageUrl));
 }
 
 function renderProducts() {
@@ -61,6 +70,8 @@ function renderProducts() {
             .join("")
         : '<div class="swiper-slide"><div class="image-fallback">Sin imagen</div></div>';
 
+      const initialImage = images[0] || "";
+
       return `
         <article class="product-card" data-category="${safeText(product.categoria || "Otros")}">
           <div class="swiper card-swiper" id="${swiperId}">
@@ -72,7 +83,7 @@ function renderProducts() {
             <h3>${safeText(product.nombre || "Sin nombre")}</h3>
             <p class="price">${safeText(product.precio || "Consultar")}</p>
             <p class="description">${safeText(product.descripcion || "")}</p>
-            <a class="cta-btn" target="_blank" rel="noopener noreferrer" href="${buildWhatsAppLink(productWhatsAppMessage(product))}">
+            <a class="cta-btn js-product-wa" target="_blank" rel="noopener noreferrer" data-product-index="${index}" data-image-url="${safeText(initialImage)}" href="${buildWhatsAppLink(productWhatsAppMessage(product, initialImage))}">
               Preguntar por WhatsApp
             </a>
           </div>
@@ -83,8 +94,22 @@ function renderProducts() {
 
   if (window.Swiper) {
     grid.querySelectorAll(".card-swiper").forEach((node) => {
+      const card = node.closest(".product-card");
+      if (!card) return;
+
+      const button = card.querySelector(".js-product-wa");
+      const productIndex = Number(button?.dataset.productIndex ?? -1);
+      const product = filtered[productIndex];
+      const images = product ? normalizeImages(product.imagenUrl) : [];
+
+      if (button && product) {
+        const firstImage = images[0] || "";
+        button.dataset.imageUrl = firstImage;
+        updateCardWhatsAppLink(button, product, firstImage);
+      }
+
       const slideCount = node.querySelectorAll(".swiper-slide").length;
-      new window.Swiper(node, {
+      const instance = new window.Swiper(node, {
         loop: slideCount > 1,
         autoplay: slideCount > 1
           ? {
@@ -97,6 +122,14 @@ function renderProducts() {
           clickable: true
         }
       });
+
+      if (button && product && images.length > 1) {
+        instance.on("slideChange", () => {
+          const imageAtSlide = images[instance.realIndex] || images[0] || "";
+          button.dataset.imageUrl = imageAtSlide;
+          updateCardWhatsAppLink(button, product, imageAtSlide);
+        });
+      }
     });
   }
 }
