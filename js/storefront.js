@@ -6,7 +6,8 @@ import { buildWhatsAppLink, initHeaderInteractions, initHeroSwiper, safeText, wi
 const state = {
   products: [],
   filterText: "",
-  selectedCategory: "todos"
+  selectedCategory: "todos",
+  lightboxOpen: false
 };
 
 function normalizeImages(imageField) {
@@ -37,6 +38,64 @@ function productWhatsAppMessage(product, imageUrl = "") {
 function updateCardWhatsAppLink(button, product, imageUrl = "") {
   if (!button) return;
   button.href = buildWhatsAppLink(productWhatsAppMessage(product, imageUrl));
+}
+
+function ensureImageLightbox() {
+  let overlay = document.getElementById("image-lightbox");
+  if (overlay) return overlay;
+
+  overlay = document.createElement("div");
+  overlay.id = "image-lightbox";
+  overlay.className = "image-lightbox";
+  overlay.hidden = true;
+  overlay.innerHTML = `
+    <div class="image-lightbox-panel" role="dialog" aria-modal="true" aria-label="Vista ampliada de producto">
+      <button type="button" class="image-lightbox-close" aria-label="Cerrar vista ampliada">×</button>
+      <img class="image-lightbox-img" alt="Vista ampliada del producto">
+    </div>
+  `;
+  document.body.appendChild(overlay);
+
+  const close = () => closeImageLightbox();
+  overlay.addEventListener("click", (event) => {
+    if (event.target === overlay || event.target.closest(".image-lightbox-close")) close();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") close();
+  });
+
+  return overlay;
+}
+
+function openImageLightbox(src, alt = "Vista ampliada del producto") {
+  if (!src) return;
+
+  const overlay = ensureImageLightbox();
+  const img = overlay.querySelector(".image-lightbox-img");
+  if (!img) return;
+
+  img.src = src;
+  img.alt = alt;
+  overlay.hidden = false;
+  overlay.classList.add("is-open");
+  state.lightboxOpen = true;
+  document.body.classList.add("lightbox-open");
+}
+
+function closeImageLightbox() {
+  const overlay = document.getElementById("image-lightbox");
+  if (!overlay) return;
+
+  const img = overlay.querySelector(".image-lightbox-img");
+  if (img) {
+    img.src = "";
+  }
+
+  overlay.hidden = true;
+  overlay.classList.remove("is-open");
+  state.lightboxOpen = false;
+  document.body.classList.remove("lightbox-open");
 }
 
 function renderProducts() {
@@ -123,6 +182,16 @@ function renderProducts() {
         }
       });
 
+      node.style.cursor = images.length ? "zoom-in" : "default";
+
+      node.addEventListener("click", (event) => {
+        const image = event.target.closest("img");
+        const slideImage = images[instance.realIndex] || images[0] || "";
+        if (!image && !slideImage) return;
+
+        openImageLightbox(slideImage || image.src, product.nombre || "Producto");
+      });
+
       if (button && product && images.length > 1) {
         instance.on("slideChange", () => {
           const imageAtSlide = images[instance.realIndex] || images[0] || "";
@@ -191,6 +260,7 @@ function registerServiceWorker() {
 }
 
 window.addEventListener("DOMContentLoaded", async () => {
+  ensureImageLightbox();
   initHeaderInteractions();
   initHeroSwiper();
   wireSocialLinks();
