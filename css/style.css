@@ -1219,6 +1219,8 @@ body.lightbox-open {
   }
 
   .footer-brand img {
+    grid-column: 1;
+    grid-row: 1 / span 2;
     width: 128px;
     height: 128px;
     padding: 0;
@@ -1227,12 +1229,16 @@ body.lightbox-open {
   }
 
   .footer-brand p {
+    grid-column: 2;
+    grid-row: 1;
     margin: 0;
     font-size: 2rem;
     line-height: 0.95;
   }
 
   .footer-brand small {
+    grid-column: 2;
+    grid-row: 2;
     margin-top: 2px;
     font-size: 0.96rem;
   }
@@ -1476,22 +1482,35 @@ body.lightbox-open {
   }
 
   .footer-brand {
-    grid-template-columns: 1fr;
-    justify-items: start;
-    gap: 6px;
+    grid-template-columns: auto 1fr;
+    justify-items: stretch;
+    align-items: center;
+    gap: 12px;
     padding-bottom: 14px;
   }
 
   .footer-brand img {
-    width: 134px;
-    height: 134px;
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    width: 126px;
+    height: 126px;
     padding: 0;
-    margin-bottom: 4px;
-    transform: scale(1.2);
+    margin-bottom: 0;
+    transform: scale(1.08);
   }
 
   .footer-brand p {
-    font-size: 2.05rem;
+    grid-column: 2;
+    grid-row: 1;
+    font-size: 1.9rem;
+    margin: 0 0 6px;
+    line-height: 0.98;
+  }
+
+  .footer-brand small {
+    grid-column: 2;
+    grid-row: 2;
+    margin-top: 0;
   }
 
   .footer-links a {
@@ -1585,6 +1604,40 @@ body.lightbox-open {
     font-size: 0.92rem;
   }
 
+  .site-footer {
+    padding: 16px 12px;
+  }
+
+  .footer-brand {
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .footer-brand img {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    width: 108px;
+    height: 108px;
+    transform: none;
+    margin-bottom: 0;
+  }
+
+  .footer-brand p {
+    grid-column: 2;
+    grid-row: 1;
+    font-size: 1.72rem;
+    margin: 0 0 6px;
+    line-height: 1;
+  }
+
+  .footer-brand small {
+    grid-column: 2;
+    grid-row: 2;
+    font-size: 0.94rem;
+    line-height: 1.35;
+  }
+
   .image-lightbox {
     padding: 8px;
   }
@@ -1655,6 +1708,33 @@ body.lightbox-open {
   .hero-copy > p:not(.kicker) {
     font-size: 0.84rem;
     line-height: 1.35;
+  }
+
+  .footer-brand {
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .footer-brand img {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    width: 96px;
+    height: 96px;
+    margin-bottom: 0;
+  }
+
+  .footer-brand p {
+    grid-column: 2;
+    grid-row: 1;
+    font-size: 1.55rem;
+    margin: 0 0 4px;
+  }
+
+  .footer-brand small {
+    grid-column: 2;
+    grid-row: 2;
+    font-size: 0.9rem;
   }
 
   .image-lightbox-panel {
