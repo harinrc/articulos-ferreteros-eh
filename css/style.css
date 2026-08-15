@@ -36,7 +36,7 @@ body {
 
 body {
   min-height: 100vh;
-  font-family: "League Spartan", sans-serif;
+  font-family: "Manrope", sans-serif;
   color: var(--text);
   background:
     radial-gradient(circle at 10% 15%, rgba(226, 97, 34, 0.16), transparent 20%),
@@ -128,8 +128,10 @@ img {
 }
 
 .main-nav a {
-  font-weight: 800;
+  font-family: "League Spartan", sans-serif;
+  font-weight: 700;
   font-size: 0.93rem;
+  letter-spacing: 0.02em;
   color: var(--text);
   padding: 9px 14px;
   border-radius: 999px;
@@ -204,7 +206,7 @@ img {
 .hero-copy {
   position: relative;
   z-index: 1;
-  max-width: min(760px, 100%);
+  max-width: min(700px, 100%);
   padding: clamp(16px, 2.6vw, 28px);
   border-radius: clamp(18px, 2.2vw, 26px);
   background: linear-gradient(145deg, rgba(8, 20, 35, 0.56), rgba(8, 20, 35, 0.32));
@@ -212,6 +214,9 @@ img {
   backdrop-filter: blur(3px);
   box-shadow: 0 20px 38px rgba(8, 18, 31, 0.3);
   animation: hero-reveal 560ms ease-out both;
+  display: grid;
+  align-content: start;
+  gap: 6px;
 }
 
 .kicker {
@@ -287,6 +292,7 @@ img {
 
 #hero-whatsapp-link {
   gap: 10px;
+  align-self: start;
 }
 
 #hero-whatsapp-link::before {
@@ -320,6 +326,7 @@ img {
   display: grid;
   gap: 18px;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
 }
 
 .feature-strip article {
@@ -327,10 +334,12 @@ img {
   border-radius: var(--radius-md);
   border: 1px solid var(--line);
   box-shadow: var(--shadow-md);
-  padding: 18px 18px 16px;
+  padding: 16px 18px;
+  min-height: 88px;
   display: grid;
-  gap: 10px;
-  justify-items: start;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  column-gap: 12px;
 }
 
 .feature-strip i {
@@ -346,7 +355,10 @@ img {
 
 .feature-strip h2 {
   margin: 0;
-  font-size: 1.05rem;
+  font-family: "League Spartan", sans-serif;
+  letter-spacing: 0.015em;
+  line-height: 1.15;
+  font-size: clamp(1rem, 1.15vw, 1.18rem);
   color: var(--text);
 }
 
@@ -917,6 +929,7 @@ img {
     padding: 16px;
     border-radius: 18px;
     background: linear-gradient(165deg, rgba(7, 16, 30, 0.58), rgba(7, 16, 30, 0.42));
+    gap: 4px;
   }
 
   .hero-overlay h1 {
@@ -933,6 +946,12 @@ img {
 
   .contact-grid {
     grid-template-columns: 1fr;
+  }
+
+  .feature-strip article {
+    grid-template-columns: auto 1fr;
+    min-height: 76px;
+    padding: 14px;
   }
 
   .admin-topbar {
@@ -984,6 +1003,26 @@ img {
   .kicker {
     font-size: 0.71rem;
     letter-spacing: 0.07em;
+  }
+
+  .feature-strip {
+    gap: 12px;
+  }
+
+  .feature-strip article {
+    min-height: 66px;
+    padding: 12px;
+    column-gap: 10px;
+  }
+
+  .feature-strip i {
+    width: 34px;
+    height: 34px;
+    font-size: 1rem;
+  }
+
+  .feature-strip h2 {
+    font-size: 0.95rem;
   }
 
   #hero-whatsapp-link {
