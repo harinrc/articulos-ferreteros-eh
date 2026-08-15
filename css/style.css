@@ -151,10 +151,14 @@ img {
 
 .hero {
   position: relative;
-  width: 100%;
+  width: min(96%, 1380px);
   height: clamp(520px, 74vh, 820px);
   overflow: hidden;
   background: #0f2237;
+  margin: 18px auto 0;
+  border-radius: 28px;
+  box-shadow: 0 20px 38px rgba(13, 24, 36, 0.14);
+  border: 1px solid rgba(13, 24, 36, 0.08);
 }
 
 .hero-swiper {
@@ -176,13 +180,13 @@ img {
   position: absolute;
   inset: 0;
   z-index: 10;
-  background: linear-gradient(90deg, rgba(11, 22, 34, 0.82) 0%, rgba(11, 22, 34, 0.5) 38%, rgba(11, 22, 34, 0.2) 100%);
+  background: linear-gradient(90deg, rgba(11, 22, 34, 0.82) 0%, rgba(11, 22, 34, 0.54) 34%, rgba(11, 22, 34, 0.16) 100%);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   text-align: left;
-  padding: 40px clamp(20px, 8vw, 90px);
+  padding: 38px clamp(18px, 5vw, 72px);
 }
 
 .kicker {
@@ -204,19 +208,20 @@ img {
 .hero-overlay h1 {
   margin: 0;
   font-family: "Bebas Neue", sans-serif;
-  font-size: clamp(2.4rem, 7vw, 6rem);
-  line-height: 0.9;
+  font-size: clamp(2.6rem, 5vw, 6.4rem);
+  line-height: 0.88;
   letter-spacing: 0.04em;
   color: #fff;
-  max-width: 700px;
+  max-width: 660px;
+  text-shadow: 0 8px 26px rgba(0, 0, 0, 0.18);
 }
 
 .hero-overlay p {
-  margin: 16px 0 0;
-  max-width: 62ch;
-  font-size: clamp(1rem, 2.1vw, 1.25rem);
+  margin: 18px 0 0;
+  max-width: 640px;
+  font-size: clamp(1rem, 2vw, 1.32rem);
   line-height: 1.6;
-  color: #e9edf5;
+  color: #edf3fc;
 }
 
 .cta-btn,
@@ -239,9 +244,10 @@ img {
 .cta-btn {
   background: linear-gradient(180deg, #f07634, #d65b1f);
   color: #fff;
-  padding: 12px 20px;
+  padding: 14px 22px;
   box-shadow: 0 14px 24px rgba(214, 91, 31, 0.28);
-  margin-top: 18px;
+  margin-top: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .cta-btn:hover {
