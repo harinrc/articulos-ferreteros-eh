@@ -676,32 +676,56 @@ img {
 
 .site-footer {
   margin: 30px clamp(12px, 2.8vw, 34px) 24px;
-  border: 1px solid rgba(21, 39, 59, 0.7);
-  background: linear-gradient(155deg, #0d1d2d, #142b42 48%, #193654);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(72, 103, 136, 0.45);
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.12), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(226, 97, 34, 0.16), transparent 26%),
+    linear-gradient(155deg, #0b1825, #12263b 44%, #173451 100%);
   color: #d8e4ef;
   border-radius: var(--radius-lg);
-  padding: clamp(16px, 4vw, 34px);
+  padding: clamp(22px, 4.4vw, 40px);
   display: grid;
-  gap: 18px;
+  gap: 22px;
   grid-template-columns: 1.2fr 1fr 1fr;
+  box-shadow: 0 24px 44px rgba(10, 20, 33, 0.2);
+}
+
+.site-footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.05), transparent 28%, transparent 72%, rgba(255, 255, 255, 0.05));
+  pointer-events: none;
 }
 
 .footer-brand img {
-  width: 86px;
-  height: 86px;
+  width: 112px;
+  height: 112px;
   object-fit: contain;
   background: #fff;
-  border-radius: 18px;
-  padding: 5px;
-  border: 2px solid rgba(226, 97, 34, 0.3);
-  box-shadow: 0 14px 24px rgba(0, 0, 0, 0.15);
+  border-radius: 24px;
+  padding: 10px;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 34px rgba(0, 0, 0, 0.22), 0 0 0 1px rgba(226, 97, 34, 0.28) inset;
 }
 
 .footer-brand p {
-  margin: 12px 0 4px;
-  font-weight: 800;
-  font-size: 1.1rem;
+  margin: 14px 0 4px;
+  font-family: "League Spartan", sans-serif;
+  font-weight: 900;
+  font-size: 1.45rem;
+  letter-spacing: 0.03em;
   color: #fff;
+}
+
+.footer-brand small {
+  max-width: 28ch;
+  display: block;
+  color: rgba(216, 228, 239, 0.88);
+  line-height: 1.45;
+  font-family: "Manrope", sans-serif;
 }
 
 @keyframes hero-reveal {
@@ -719,21 +743,31 @@ img {
 .footer-links {
   display: grid;
   align-content: start;
-  gap: 8px;
+  gap: 10px;
+  position: relative;
+  z-index: 1;
 }
 
 .footer-links h3 {
-  margin: 0 0 4px;
-  font-size: 1rem;
-  color: #f2f8ff;
+  margin: 0 0 6px;
+  font-family: "League Spartan", sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.03em;
+  color: #f5f9ff;
 }
 
 .footer-links a {
+  width: fit-content;
   color: #d8e4ef;
+  padding: 7px 10px;
+  border-radius: 999px;
+  transition: transform 0.18s ease, background-color 0.18s ease, color 0.18s ease;
 }
 
 .footer-links a:hover {
   color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateX(2px);
 }
 
 .auth-page,
@@ -1028,6 +1062,24 @@ img {
 
   .site-footer {
     padding: 18px 16px;
+  }
+
+  .site-footer {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .footer-brand img {
+    width: 98px;
+    height: 98px;
+  }
+
+  .footer-brand p {
+    font-size: 1.3rem;
+  }
+
+  .footer-links a {
+    padding: 6px 0;
   }
 
   .hero {
