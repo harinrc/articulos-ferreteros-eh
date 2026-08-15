@@ -152,7 +152,7 @@ img {
 .hero {
   position: relative;
   width: min(96%, 1380px);
-  height: clamp(560px, 74vh, 860px);
+  height: clamp(540px, 74vh, 820px);
   overflow: hidden;
   background: linear-gradient(135deg, #122f48 0%, #163a58 30%, #0b2031 100%);
   margin: 18px auto 0;
@@ -181,31 +181,19 @@ img {
   inset: 0;
   z-index: 10;
   background:
-    linear-gradient(90deg, rgba(7, 16, 29, 0.82) 0%, rgba(8, 18, 31, 0.72) 26%, rgba(8, 18, 31, 0.32) 52%, rgba(8, 18, 31, 0.18) 100%),
-    linear-gradient(135deg, rgba(226, 97, 34, 0.14), rgba(255, 255, 255, 0));
+    linear-gradient(90deg, rgba(7, 16, 29, 0.84) 0%, rgba(8, 18, 31, 0.72) 26%, rgba(8, 18, 31, 0.32) 52%, rgba(8, 18, 31, 0.18) 100%),
+    linear-gradient(135deg, rgba(226, 97, 34, 0.12), rgba(255, 255, 255, 0));
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: flex-start;
   text-align: left;
-  padding: 38px clamp(18px, 5vw, 72px);
+  padding: 32px clamp(18px, 5vw, 72px);
 }
 
-.hero-overlay > * {
+.hero-copy {
   position: relative;
   z-index: 1;
-}
-
-.hero-overlay::before {
-  content: "";
-  position: absolute;
-  inset: 24px 26px 24px 26px;
-  border-radius: 24px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  max-width: 760px;
 }
 
 .kicker {
@@ -227,19 +215,20 @@ img {
 
 .hero-overlay h1 {
   margin: 0;
-  font-family: "Bebas Neue", sans-serif;
-  font-size: clamp(3rem, 5.5vw, 7rem);
+  font-family: "League Spartan", "Arial Black", sans-serif;
+  font-size: clamp(3rem, 5.7vw, 7rem);
   line-height: 0.84;
-  letter-spacing: 0.04em;
+  letter-spacing: -0.065em;
+  font-weight: 900;
   color: #fff;
-  max-width: 700px;
-  text-shadow: 0 10px 26px rgba(0, 0, 0, 0.18);
+  max-width: 710px;
   text-transform: uppercase;
+  text-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
 }
 
 .hero-overlay p {
   margin: 18px 0 0;
-  max-width: 640px;
+  max-width: 620px;
   font-size: clamp(1rem, 2vw, 1.32rem);
   line-height: 1.6;
   color: #edf3fc;
@@ -865,16 +854,27 @@ img {
   .hero {
     min-height: 68vh;
     height: min(70vh, 580px);
+    border-radius: 22px;
   }
 
   .hero-overlay {
-    justify-content: end;
-    padding: 26px 18px 20px;
-    background: linear-gradient(180deg, rgba(7, 16, 30, 0.28) 0%, rgba(7, 16, 30, 0.82) 70%);
+    align-items: flex-end;
+    padding: 20px 18px 18px;
+    background: linear-gradient(180deg, rgba(7, 16, 30, 0.28) 0%, rgba(7, 16, 30, 0.82) 72%);
+  }
+
+  .hero-copy {
+    max-width: 100%;
+  }
+
+  .hero-overlay h1 {
+    font-size: clamp(2.4rem, 12vw, 4rem);
+    line-height: 0.92;
   }
 
   .hero-overlay p {
     max-width: 100%;
+    font-size: 0.98rem;
   }
 
   .contact-grid {
