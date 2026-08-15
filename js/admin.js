@@ -24,6 +24,11 @@ import { STORE_CONFIG } from "./config.js";
 import { safeText } from "./ui.js";
 
 const dom = {};
+const state = {
+  editingImages: [],
+  selectedFiles: [],
+  previewObjectUrls: []
+};
 
 function cacheDom() {
   dom.form = document.getElementById("product-form");
@@ -39,11 +44,73 @@ function cacheDom() {
   dom.cancelEditButton = document.getElementById("cancel-edit-button");
   dom.list = document.getElementById("admin-product-list");
   dom.logoutButton = document.getElementById("logout-button");
+  dom.imagePreview = document.getElementById("image-preview");
+  dom.imagePreviewNote = document.getElementById("image-preview-note");
 }
 
 function showMessage(text) {
   if (!dom.message) return;
   dom.message.textContent = text;
+}
+
+function normalizeImages(imageField) {
+  if (Array.isArray(imageField)) return imageField.filter(Boolean);
+  if (typeof imageField === "string" && imageField.trim()) return [imageField.trim()];
+  return [];
+}
+
+function renderImagePreview(existingImages = [], selectedFiles = []) {
+  if (!dom.imagePreview) return;
+
+  state.previewObjectUrls.forEach((url) => URL.revokeObjectURL(url));
+  state.previewObjectUrls = [];
+
+  const existing = normalizeImages(existingImages);
+  const fileItems = Array.from(selectedFiles || []).map((file) => ({
+    name: file.name,
+    src: URL.createObjectURL(file),
+    kind: "new"
+  }));
+
+  state.previewObjectUrls = fileItems.map((item) => item.src);
+
+  const existingItems = existing.map((src) => ({
+    name: "Imagen existente",
+    src,
+    kind: "existing"
+  }));
+
+  const items = [...existingItems, ...fileItems];
+
+  if (!items.length) {
+    dom.imagePreview.innerHTML = '<p class="image-preview-empty">Todavia no hay imagenes para previsualizar.</p>';
+    if (dom.imagePreviewNote) {
+      dom.imagePreviewNote.textContent = "Agrega una o varias imagenes para ver la previsualizacion.";
+    }
+    return;
+  }
+
+  if (dom.imagePreviewNote) {
+    dom.imagePreviewNote.textContent = `${existingItems.length} existentes y ${fileItems.length} nuevas imagenes.`;
+  }
+
+  dom.imagePreview.innerHTML = items
+    .map(
+      (item, index) => `
+        <figure class="image-preview-item ${item.kind}">
+          <button type="button" class="image-preview-remove" data-kind="${item.kind}" data-index="${item.kind === "existing" ? existingItems.indexOf(item) : fileItems.indexOf(item)}" aria-label="Quitar imagen ${index + 1}">×</button>
+          <img src="${item.src}" alt="Vista previa ${index + 1}">
+          <figcaption>${safeText(item.kind === "existing" ? "Existente" : "Nueva")}${item.name && item.kind === "new" ? ` · ${safeText(item.name)}` : ""}</figcaption>
+        </figure>
+      `
+    )
+    .join("");
+}
+
+function syncFileInputFromState() {
+  const dataTransfer = new DataTransfer();
+  state.selectedFiles.forEach((file) => dataTransfer.items.add(file));
+  dom.images.files = dataTransfer.files;
 }
 
 async function uploadImageFiles(files) {
@@ -63,6 +130,9 @@ function resetForm() {
   dom.productId.value = "";
   dom.formTitle.textContent = "Agregar producto";
   dom.cancelEditButton.hidden = true;
+  state.editingImages = [];
+  state.selectedFiles = [];
+  renderImagePreview();
   showMessage("");
 }
 
@@ -117,6 +187,8 @@ async function startEdit(id) {
   if (!snap.exists()) return;
 
   const product = snap.data();
+  state.editingImages = normalizeImages(product.imagenUrl);
+  state.selectedFiles = [];
   dom.productId.value = id;
   dom.name.value = product.nombre || "";
   dom.price.value = product.precio || "";
@@ -125,6 +197,7 @@ async function startEdit(id) {
 
   dom.formTitle.textContent = "Editar producto";
   dom.cancelEditButton.hidden = false;
+  renderImagePreview(state.editingImages);
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
@@ -147,13 +220,11 @@ async function onSubmit(event) {
   showMessage("Guardando...");
 
   try {
-    let imageUrls = [];
+    let imageUrls = [...state.editingImages];
 
     if (files.length > 0) {
-      imageUrls = await uploadImageFiles(files);
-    } else if (editingId) {
-      const existing = await getDoc(doc(db, STORE_CONFIG.firebaseCollection, editingId));
-      imageUrls = Array.isArray(existing.data()?.imagenUrl) ? existing.data().imagenUrl : [];
+      const newImageUrls = await uploadImageFiles(files);
+      imageUrls = editingId ? [...imageUrls, ...newImageUrls] : newImageUrls;
     }
 
     const payload = {
@@ -189,6 +260,29 @@ async function onSubmit(event) {
 function bindEvents() {
   dom.form.addEventListener("submit", onSubmit);
   dom.cancelEditButton.addEventListener("click", resetForm);
+  dom.images.addEventListener("change", () => {
+    state.selectedFiles = Array.from(dom.images.files || []);
+    renderImagePreview(state.editingImages, state.selectedFiles);
+  });
+  dom.imagePreview.addEventListener("click", (event) => {
+    const button = event.target.closest(".image-preview-remove");
+    if (!button) return;
+
+    const kind = button.dataset.kind;
+    const index = Number(button.dataset.index);
+
+    if (kind === "existing") {
+      state.editingImages.splice(index, 1);
+      renderImagePreview(state.editingImages, state.selectedFiles);
+      return;
+    }
+
+    if (kind === "new") {
+      state.selectedFiles.splice(index, 1);
+      syncFileInputFromState();
+      renderImagePreview(state.editingImages, state.selectedFiles);
+    }
+  });
   dom.logoutButton.addEventListener("click", async () => {
     await signOut(auth);
     window.location.href = "./login.html";

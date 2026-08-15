@@ -61,6 +61,14 @@
           <label for="product-images">Imagenes (puedes subir varias)</label>
           <input id="product-images" type="file" accept="image/png,image/jpeg,image/webp" multiple>
 
+          <div class="image-preview-block">
+            <div class="image-preview-head">
+              <p>Previsualizacion de imagenes</p>
+              <small id="image-preview-note">Las imagenes existentes y nuevas se mostraran aqui.</small>
+            </div>
+            <div id="image-preview" class="image-preview-grid" aria-live="polite"></div>
+          </div>
+
           <div class="form-buttons">
             <button type="submit" id="save-button" class="cta-btn">Guardar producto</button>
             <button type="button" id="cancel-edit-button" class="muted-btn" hidden>Cancelar edicion</button>
