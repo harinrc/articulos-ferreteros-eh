@@ -1326,7 +1326,7 @@ body.lightbox-open {
     width: calc(100% - 10px);
     margin-top: 10px;
     border-radius: 16px;
-    height: min(66vh, 560px);
+    height: min(60vh, 520px);
   }
 
   .hero-overlay {
@@ -1354,14 +1354,25 @@ body.lightbox-open {
   }
 
   .image-lightbox-panel {
-    width: 96vw;
+    width: min(94vw, 420px);
+    max-height: 82vh;
+  }
+
+  .image-lightbox {
+    padding: 10px;
+  }
+
+  .image-lightbox-img {
+    max-height: 74vh;
+    border-radius: 14px;
   }
 
   .image-lightbox-close {
-    top: -10px;
-    right: -10px;
-    width: 38px;
-    height: 38px;
+    top: 10px;
+    right: 10px;
+    width: 34px;
+    height: 34px;
+    font-size: 1.5rem;
   }
 
   .site-footer {
@@ -1428,6 +1439,120 @@ body.lightbox-open {
   .about-page {
     margin-left: 12px;
     margin-right: 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  .site-header {
+    padding: 8px 8px;
+    gap: 8px;
+  }
+
+  .brand {
+    max-width: calc(100vw - 64px);
+    gap: 6px;
+    padding: 3px 6px 3px 3px;
+  }
+
+  .brand img {
+    width: 40px;
+    height: 40px;
+    padding: 3px;
+    border-radius: 11px;
+  }
+
+  .brand span {
+    font-size: clamp(0.95rem, 4.2vw, 1.18rem);
+    max-width: 7ch;
+  }
+
+  .menu-toggle {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+  }
+
+  .hero {
+    width: calc(100% - 8px);
+    margin-top: 8px;
+    height: min(56vh, 480px);
+    border-radius: 14px;
+  }
+
+  .hero-overlay {
+    padding: 10px 8px 8px;
+  }
+
+  .hero-copy {
+    padding: 12px;
+    border-radius: 14px;
+  }
+
+  .hero-overlay h1 {
+    font-size: clamp(1.55rem, 9.2vw, 2.5rem);
+    line-height: 0.9;
+  }
+
+  .hero-copy > p:not(.kicker) {
+    font-size: 0.88rem;
+    margin-top: 8px;
+  }
+
+  .cta-btn {
+    min-height: 40px;
+    padding: 10px 14px;
+    font-size: 0.92rem;
+  }
+
+  .image-lightbox {
+    padding: 8px;
+  }
+
+  .image-lightbox-panel {
+    width: min(96vw, 340px);
+    max-height: 78vh;
+  }
+
+  .image-lightbox-img {
+    max-height: 70vh;
+    border-radius: 12px;
+  }
+
+  .image-lightbox-close {
+    top: 8px;
+    right: 8px;
+    width: 32px;
+    height: 32px;
+    font-size: 1.35rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .brand span {
+    max-width: 6ch;
+    font-size: 0.92rem;
+  }
+
+  .hero {
+    height: min(52vh, 440px);
+  }
+
+  .hero-overlay h1 {
+    font-size: clamp(1.4rem, 8.4vw, 2.15rem);
+  }
+
+  .hero-copy > p:not(.kicker) {
+    font-size: 0.84rem;
+    line-height: 1.35;
+  }
+
+  .image-lightbox-panel {
+    width: min(98vw, 300px);
+    max-height: 74vh;
+  }
+
+  .image-lightbox-img {
+    max-height: 66vh;
   }
 }
 
