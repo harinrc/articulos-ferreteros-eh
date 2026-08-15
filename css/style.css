@@ -1528,9 +1528,38 @@ body.lightbox-open {
 }
 
 @media (max-width: 320px) {
+  .site-header {
+    padding: 8px 6px;
+    gap: 6px;
+  }
+
+  .brand {
+    max-width: calc(100vw - 58px);
+    gap: 5px;
+    padding: 3px 5px 3px 3px;
+  }
+
+  .brand img {
+    width: 36px;
+    height: 36px;
+    padding: 3px;
+    border-radius: 10px;
+  }
+
   .brand span {
-    max-width: 6ch;
-    font-size: 0.92rem;
+    font-size: 0.68rem;
+    line-height: 0.9;
+    letter-spacing: 0.01em;
+    white-space: normal;
+    overflow-wrap: normal;
+    word-break: keep-all;
+    max-width: 12ch;
+  }
+
+  .menu-toggle {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
   }
 
   .hero {
