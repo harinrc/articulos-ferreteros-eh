@@ -81,9 +81,9 @@ img {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   min-width: 0;
-  padding: 6px 10px 6px 6px;
+  padding: 6px 10px 6px 5px;
   border-radius: 18px;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(245, 247, 250, 0.9));
   border: 1px solid rgba(15, 34, 55, 0.08);
@@ -98,7 +98,7 @@ img {
   background: linear-gradient(135deg, #fff, #f6efe9);
   border: 2px solid rgba(226, 97, 34, 0.32);
   box-shadow: 0 10px 20px rgba(226, 97, 34, 0.2);
-  padding: 5px;
+  padding: 1px;
 }
 
 .brand span {
@@ -782,12 +782,12 @@ body.lightbox-open {
 }
 
 .footer-brand img {
-  width: 112px;
-  height: 112px;
+  width: 132px;
+  height: 132px;
   object-fit: contain;
   background: #fff;
   border-radius: 24px;
-  padding: 10px;
+  padding: 3px;
   border: 3px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 20px 34px rgba(0, 0, 0, 0.22), 0 0 0 1px rgba(226, 97, 34, 0.28) inset;
 }
@@ -867,9 +867,14 @@ body.lightbox-open {
 }
 
 .auth-card img {
-  width: 120px;
-  height: 120px;
+  width: 154px;
+  height: 154px;
   object-fit: contain;
+  padding: 4px;
+  border-radius: 20px;
+  background: #fff;
+  border: 2px solid rgba(226, 97, 34, 0.25);
+  box-shadow: 0 14px 24px rgba(15, 34, 55, 0.12);
   justify-self: center;
 }
 
@@ -1191,6 +1196,36 @@ body.lightbox-open {
     grid-template-columns: 1fr;
   }
 
+  .site-footer {
+    padding: 18px 16px;
+    gap: 16px;
+    border-radius: 22px;
+  }
+
+  .footer-brand {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .footer-brand img {
+    width: 118px;
+    height: 118px;
+    padding: 2px;
+    border-radius: 22px;
+  }
+
+  .footer-brand p {
+    margin: 0;
+    font-size: 1.9rem;
+    line-height: 0.95;
+  }
+
+  .footer-brand small {
+    margin-top: -2px;
+  }
+
   .feature-strip article {
     grid-template-columns: auto 1fr;
     min-height: 76px;
@@ -1295,9 +1330,13 @@ body.lightbox-open {
 
 @media (max-width: 480px) {
   .brand {
-    gap: 8px;
-    padding: 4px 8px 4px 4px;
+    gap: 6px;
+    padding: 4px 8px 4px 3px;
     max-width: calc(100vw - 72px);
+  }
+
+  .brand img {
+    padding: 0;
   }
 
   .brand span {
@@ -1400,6 +1439,27 @@ body.lightbox-open {
 
   .site-footer {
     padding: 18px 16px;
+  }
+
+  .footer-brand {
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+
+  .footer-brand img {
+    width: 124px;
+    height: 124px;
+    padding: 2px;
+    margin-bottom: 4px;
+  }
+
+  .footer-brand p {
+    font-size: 2.05rem;
+  }
+
+  .auth-card img {
+    width: 140px;
+    height: 140px;
   }
 
   .site-footer {
