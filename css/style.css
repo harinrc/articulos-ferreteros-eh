@@ -194,7 +194,7 @@ img {
   inset: 0;
   z-index: 10;
   background:
-    linear-gradient(96deg, rgba(7, 16, 29, 0.88) 0%, rgba(8, 18, 31, 0.78) 30%, rgba(8, 18, 31, 0.34) 56%, rgba(8, 18, 31, 0.16) 100%),
+    linear-gradient(96deg, rgba(7, 16, 29, 0.86) 0%, rgba(8, 18, 31, 0.74) 34%, rgba(8, 18, 31, 0.4) 58%, rgba(8, 18, 31, 0.16) 82%, rgba(8, 18, 31, 0.08) 100%),
     linear-gradient(135deg, rgba(226, 97, 34, 0.12), rgba(255, 255, 255, 0));
   display: flex;
   align-items: center;
@@ -206,10 +206,10 @@ img {
 .hero-copy {
   position: relative;
   z-index: 1;
-  max-width: min(700px, 100%);
+  max-width: min(640px, 100%);
   padding: clamp(16px, 2.6vw, 28px);
   border-radius: clamp(18px, 2.2vw, 26px);
-  background: linear-gradient(145deg, rgba(8, 20, 35, 0.56), rgba(8, 20, 35, 0.32));
+  background: linear-gradient(145deg, rgba(8, 20, 35, 0.5), rgba(8, 20, 35, 0.26));
   border: 1px solid rgba(255, 255, 255, 0.14);
   backdrop-filter: blur(3px);
   box-shadow: 0 20px 38px rgba(8, 18, 31, 0.3);
@@ -239,12 +239,12 @@ img {
 .hero-overlay h1 {
   margin: 0;
   font-family: "League Spartan", sans-serif;
-  font-size: clamp(2.45rem, 5.6vw, 6rem);
-  line-height: 0.86;
+  font-size: clamp(2.2rem, 4.9vw, 5rem);
+  line-height: 0.88;
   letter-spacing: -0.028em;
   font-weight: 900;
-  color: #fff;
-  max-width: 18ch;
+  color: #fefefe;
+  max-width: 15ch;
   text-transform: uppercase;
   text-wrap: balance;
   text-shadow: 0 14px 32px rgba(0, 0, 0, 0.26);
@@ -252,9 +252,9 @@ img {
 
 .hero-copy > p:not(.kicker) {
   margin: 16px 0 0;
-  max-width: 54ch;
+  max-width: 48ch;
   font-family: "Manrope", sans-serif;
-  font-size: clamp(1rem, 1.8vw, 1.24rem);
+  font-size: clamp(1rem, 1.45vw, 1.18rem);
   line-height: 1.5;
   color: #eef4fb;
   text-wrap: pretty;
@@ -895,6 +895,32 @@ img {
   .admin-grid,
   .about-cards {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1460px) {
+  .hero {
+    height: clamp(520px, 69vh, 700px);
+  }
+
+  .hero-overlay {
+    padding-left: clamp(18px, 3.4vw, 46px);
+    padding-right: clamp(18px, 3vw, 40px);
+  }
+
+  .hero-copy {
+    max-width: min(560px, 100%);
+    padding: 18px 18px 20px;
+  }
+
+  .hero-overlay h1 {
+    font-size: clamp(2.3rem, 4.4vw, 4.5rem);
+    max-width: 14ch;
+  }
+
+  .hero-copy > p:not(.kicker) {
+    font-size: clamp(0.98rem, 1.25vw, 1.08rem);
+    max-width: 44ch;
   }
 }
 
