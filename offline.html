@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sin conexión | Artículos Ferreteros EH</title>
+  <meta name="theme-color" content="#0f2237">
+  <link rel="icon" href="./assets/logo-ferreteria-eh.png" type="image/png">
+  <style>
+    :root {
+      color-scheme: light;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      font-family: Manrope, system-ui, sans-serif;
+      background: radial-gradient(circle at top, #f0f5fb, #e4ecf6 60%, #dae5f2);
+      color: #12243a;
+    }
+
+    .offline-card {
+      width: min(560px, 100%);
+      background: #ffffff;
+      border: 1px solid #d7e1eb;
+      border-radius: 22px;
+      padding: clamp(18px, 3vw, 30px);
+      box-shadow: 0 20px 40px rgba(18, 36, 58, 0.12);
+      text-align: center;
+    }
+
+    .offline-card img {
+      width: 94px;
+      height: 94px;
+      object-fit: contain;
+      margin: 0 auto 14px;
+      border-radius: 18px;
+      border: 2px solid rgba(226, 97, 34, 0.26);
+      padding: 6px;
+      background: #fff;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      line-height: 1.05;
+      font-family: "Bebas Neue", Impact, sans-serif;
+      letter-spacing: 0.04em;
+      color: #112338;
+    }
+
+    p {
+      margin: 14px 0 0;
+      line-height: 1.55;
+      color: #2b4764;
+    }
+
+    .retry {
+      margin-top: 18px;
+      border: none;
+      border-radius: 12px;
+      padding: 12px 18px;
+      font-weight: 800;
+      cursor: pointer;
+      color: #fff;
+      background: linear-gradient(180deg, #f07634, #d65b1f);
+      box-shadow: 0 12px 24px rgba(214, 91, 31, 0.28);
+    }
+  </style>
+</head>
+<body>
+  <main class="offline-card">
+    <img src="./assets/logo-ferreteria-eh.png" alt="Logo Artículos Ferreteros EH">
+    <h1>Sin conexión</h1>
+    <p>No hay internet en este momento. Cuando vuelvas a conectarte, recarga la página para seguir navegando.</p>
+    <button class="retry" type="button" onclick="location.reload()">Reintentar</button>
+  </main>
+</body>
+</html>

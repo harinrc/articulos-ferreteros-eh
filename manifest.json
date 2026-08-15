@@ -2,12 +2,30 @@
   "name": "Artículos Ferreteros EH",
   "short_name": "Ferretería EH",
   "description": "Tienda online de artículos ferreteros con catálogo dinámico.",
+  "lang": "es-NI",
+  "dir": "ltr",
   "id": "./",
-  "start_url": "./index.html",
+  "start_url": "./index.html?source=pwa",
   "scope": "./",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
   "display": "standalone",
+  "orientation": "portrait-primary",
+  "categories": ["shopping", "business", "productivity"],
+  "prefer_related_applications": false,
   "background_color": "#ebedf0",
   "theme_color": "#0d2238",
+  "shortcuts": [
+    {
+      "name": "Ver productos",
+      "short_name": "Productos",
+      "url": "./index.html#productos"
+    },
+    {
+      "name": "Contacto por WhatsApp",
+      "short_name": "Contacto",
+      "url": "./index.html#contacto"
+    }
+  ],
   "icons": [
     {
       "src": "./assets/logo-ferreteria-eh.png",

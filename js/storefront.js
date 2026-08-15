@@ -1,7 +1,15 @@
 import { collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 import { db } from "./firebase-init.js";
 import { STORE_CONFIG } from "./config.js";
-import { buildWhatsAppLink, initHeaderInteractions, initHeroSwiper, safeText, wireSocialLinks } from "./ui.js";
+import {
+  buildWhatsAppLink,
+  initHeaderInteractions,
+  initHeroSwiper,
+  initInstallAppButton,
+  registerServiceWorker,
+  safeText,
+  wireSocialLinks
+} from "./ui.js";
 
 const state = {
   products: [],
@@ -247,22 +255,11 @@ function bindCatalogControls() {
   });
 }
 
-function registerServiceWorker() {
-  if (!("serviceWorker" in navigator)) return;
-
-  window.addEventListener("load", async () => {
-    try {
-      await navigator.serviceWorker.register("./sw.js", { scope: "./" });
-    } catch (error) {
-      console.error("Service Worker registration failed", error);
-    }
-  });
-}
-
 window.addEventListener("DOMContentLoaded", async () => {
   ensureImageLightbox();
   initHeaderInteractions();
   initHeroSwiper();
+  initInstallAppButton();
   wireSocialLinks();
   bindCatalogControls();
   registerServiceWorker();

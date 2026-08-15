@@ -1,5 +1,7 @@
 import { STORE_CONFIG } from "./config.js";
 
+let deferredInstallPrompt = null;
+
 export function buildWhatsAppLink(message) {
   const text = message || STORE_CONFIG.whatsappGreeting;
   return `https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${encodeURIComponent(text)}`;
@@ -88,6 +90,53 @@ export function initHeroSwiper() {
       delay: 3500,
       disableOnInteraction: false
     }
+  });
+}
+
+export function registerServiceWorker() {
+  if (!("serviceWorker" in navigator)) return;
+
+  window.addEventListener("load", async () => {
+    try {
+      await navigator.serviceWorker.register("./sw.js", { scope: "./" });
+    } catch (error) {
+      console.error("Service Worker registration failed", error);
+    }
+  });
+}
+
+export function initInstallAppButton() {
+  const installButton = document.getElementById("install-app-btn");
+  if (!installButton) return;
+
+  const isStandalone = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone;
+  if (isStandalone) {
+    installButton.hidden = true;
+    return;
+  }
+
+  installButton.addEventListener("click", async () => {
+    if (!deferredInstallPrompt) return;
+
+    deferredInstallPrompt.prompt();
+    try {
+      await deferredInstallPrompt.userChoice;
+    } catch (error) {
+      console.error("Install prompt failed", error);
+    }
+    deferredInstallPrompt = null;
+    installButton.hidden = true;
+  });
+
+  window.addEventListener("beforeinstallprompt", (event) => {
+    event.preventDefault();
+    deferredInstallPrompt = event;
+    installButton.hidden = false;
+  });
+
+  window.addEventListener("appinstalled", () => {
+    deferredInstallPrompt = null;
+    installButton.hidden = true;
   });
 }
 

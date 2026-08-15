@@ -21,7 +21,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-storage.js";
 import { auth, db, storage } from "./firebase-init.js";
 import { STORE_CONFIG } from "./config.js";
-import { safeText } from "./ui.js";
+import { registerServiceWorker, safeText } from "./ui.js";
 
 const dom = {};
 const state = {
@@ -290,6 +290,7 @@ function bindEvents() {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
+  registerServiceWorker();
   cacheDom();
 
   onAuthStateChanged(auth, async (user) => {

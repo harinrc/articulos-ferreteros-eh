@@ -1,7 +1,10 @@
 import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
 import { auth } from "./firebase-init.js";
+import { registerServiceWorker } from "./ui.js";
 
 window.addEventListener("DOMContentLoaded", () => {
+  registerServiceWorker();
+
   const form = document.getElementById("login-form");
   const message = document.getElementById("login-message");
 

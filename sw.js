@@ -1,10 +1,12 @@
-const CACHE_NAME = "ferreteria-eh-v1";
+const CACHE_NAME = "ferreteria-eh-v2";
+const OFFLINE_URL = "./offline.html";
 const CORE_ASSETS = [
   "./",
   "./index.html",
   "./nosotros.html",
   "./login.html",
   "./admin.html",
+  OFFLINE_URL,
   "./manifest.json",
   "./css/style.css",
   "./js/config.js",
@@ -36,8 +38,24 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
 
+  const requestUrl = new URL(event.request.url);
+  const isSameOrigin = requestUrl.origin === self.location.origin;
+
   if (event.request.mode === "navigate") {
-    event.respondWith(fetch(event.request).catch(() => caches.match("./index.html")));
+    event.respondWith(
+      fetch(event.request)
+        .then((response) => {
+          const copy = response.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+          return response;
+        })
+        .catch(() => caches.match(event.request).then((cached) => cached || caches.match(OFFLINE_URL)))
+    );
+    return;
+  }
+
+  if (!isSameOrigin) {
+    event.respondWith(fetch(event.request));
     return;
   }
 
@@ -47,14 +65,16 @@ self.addEventListener("fetch", (event) => {
 
       return fetch(event.request)
         .then((network) => {
-          const isSameOrigin = new URL(event.request.url).origin === self.location.origin;
-          if (isSameOrigin && network.ok) {
+          if (network.ok) {
             const copy = network.clone();
             caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
           }
           return network;
         })
-        .catch(() => caches.match("./index.html"));
+        .catch(() => {
+          if (event.request.destination === "document") return caches.match(OFFLINE_URL);
+          return caches.match("./assets/logo-ferreteria-eh.png");
+        });
     })
   );
 });
